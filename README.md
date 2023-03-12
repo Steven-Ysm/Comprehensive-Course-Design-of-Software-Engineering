@@ -55,9 +55,7 @@ pip install -r requirements.txt
 
 以下为演示视频，这是较早版本，后续的登录注册页面重新进行了修改，具体可观看报告中的截图。
 
-<video id="video" controls="" preload="none">
-    <source id="mp4" src="https://github.com/Steven-Ysm/Comprehensive-Course-Design-of-Software-Engineering/blob/master/video/%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4" type="video/mp4">
-</video>
+[![Watch the video](https://github.com/Steven-Ysm/Comprehensive-Course-Design-of-Software-Engineering/blob/master/video/%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4）
 
 
 ## 6. 参考来源
