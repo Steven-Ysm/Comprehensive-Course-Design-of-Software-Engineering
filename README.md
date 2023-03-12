@@ -56,8 +56,9 @@ pip install -r requirements.txt
 以下为演示视频，这是较早版本，后续的登录注册页面重新进行了修改，具体可观看报告中的截图。
 
 <video id="video" controls="" preload="none">
-    <source id="mp4" src="E:\Github\Flask-Face_Recognition-Yolo\video\演示视频.mp4" type="video/mp4">
+    <source id="mp4" src="E:\Github\Comprehensive-Course-Design-of-Software-Engineering\video\演示视频.mp4" type="video/mp4">
 </video>
+
 
 ## 5.
 
@@ -66,4 +67,3 @@ pip install -r requirements.txt
 + <https://blog.csdn.net/qq_34717531/article/details/125095246?spm=1001.2014.3001.5502%E3%80%82>
 + <https://download.csdn.net/download/weixin_44441567/85020472?spm=1001.2014.3001.5503>
 
-# Comprehensive-Course-Design-of-Software-Engineering
