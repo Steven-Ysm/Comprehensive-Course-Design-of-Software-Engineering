@@ -1,0 +1,60 @@
+{% extends 'nav.html' %}
+{% block title %} 视频识别 {% endblock %}
+{% block body_part %}
+<body>
+    <div class='center'>
+        <div class='title'>视频识别</div>
+        <form action="" enctype='multipart/form-data' method='POST'>
+            <label  id="realBtn" class="btn btn-info">
+                <input  type="file" id="fileInput1" name="file" class="mFileInput" style="left:-9999px;position:absolute;" onchange='showPicked(this)'>
+                <span >选择视频</span >
+            </label >
+            
+            <div class='upload-label'>
+                <label id='upload-label'>没有选择文件</label>
+            </div>
+            <div>
+                <video autoplay="autoplay" id='video-pick' class='no-display' alt='Chosen Image' height='250'>
+            </div>
+            <br>
+            <p>或填写绝对路径<p>
+                <p><input type="text" name="name" style="margin-top:10px;"/><p>
+            <p>（注：如果既选择了文件又填写了地址，以地址为检测目标）<p>
+            <input type="submit" value="上传并识别" class="button-new" style="margin-top:15px;"/>
+        </form>
+      </div>
+      <script>
+        function initUpload() {
+            document.getElementById("fileInput1").addEventListener('change', function () {
+                const { files } = this
+                const f = files[0]
+    
+                // 获取文件名
+                var fileName = this.value.replace(/\\/gim, '/').split('/').pop()
+                document.getElementById("upload-label").innerHTML = fileName
+            })
+        }
+    
+        initUpload()
+
+        function showPicked(input) {
+            el("upload-label").innerHTML = input.files[0].name;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                if (e.target.result.split("/")[0].split(":")[1] == "image"){
+                el("video-pick").className = "no-display";
+                }
+            else{
+                el("video-pick").src = e.target.result;
+                el("video-pick").className = "";
+                }
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+        
+        showPicked(input)
+
+      </script>
+</body>
+{% endblock %}

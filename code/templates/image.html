@@ -1,0 +1,30 @@
+{% extends 'nav.html' %}
+
+{% block title %} yolo deepsort {% endblock %}
+{% block body_part %}
+<body>
+  <div>
+    <div class='center'>
+      <div class='title'>图像识别</div>
+      <div class='content'>
+        <div class='no-display'>
+        <form action = "/images" method = "POST"
+          enctype = "multipart/form-data">
+          <input id='file-input' class='no-display' type='file' name='images' accept='image/png,image/jpeg,image/jpg,video/mp4,video/avi' onchange='showPicked(this)'>
+          </div>
+          <button class='choose-file-button' type='button' onclick='showPicker()'>选择图像</button>
+          <div class='upload-label'>
+            <label id='upload-label'>没有选择图像</label>
+          </div>
+          <div>
+            <img id='image-picked' class='no-display' alt='Chosen Image' height='250'>
+          </div>
+          <div class='analyze'>
+            <button id="analyze-button" class="analyze-button" type = "submit">检测</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock %}

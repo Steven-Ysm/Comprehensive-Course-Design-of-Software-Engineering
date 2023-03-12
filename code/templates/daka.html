@@ -1,0 +1,86 @@
+{% extends 'nav.html' %}
+{% block body_part %}
+
+<div id="container">
+    <canvas hidden id="canvasOutput"></canvas>
+    <video autoplay="true" id="videoElement" style="text-align: center"></video>
+</div>
+
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js" integrity="sha384-gDaozqUvc4HTgo8iZjwth73C6dDDeOJsAgpxBcMpZYztUfjHXpzrpdrHRdVp8ySO" crossorigin="anonymous"></script>
+<script src="https://docs.opencv.org/master/opencv.js" type="text/javascript"></script>
+
+<script>
+
+    cv['onRuntimeInitialized']=()=>{
+        var socket = io('/');
+        var success = false;
+
+        socket.on('connect', function(){
+            console.log("Connected...!", socket.connected)
+        });
+
+        const video = document.querySelector("#videoElement");
+
+        video.width = 500;
+        video.height = 375;
+        
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Something went wrong!");
+            });
+        }
+
+
+        let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
+        let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
+        let cap = new cv.VideoCapture(video);
+        
+        setInterval(() => {
+            if (success === false){
+                cap.read(src);
+                cv.imshow("canvasOutput",src);
+
+                var type = "image/png";
+                var data = document.getElementById("canvasOutput").toDataURL(type);
+                data = data.replace('data:' + type + ';base64,', ''); //split off junk
+                console.log(data);
+                socket.emit('image', data);
+            }
+        }, 1000);
+
+        var wrongtime = 0
+
+        socket.on('response_back', function(is_success){
+            success = is_success;
+            socket.on('name', function(username){
+                name = username
+                console.log(success,name)
+                if (success === true){
+                    alert("打卡成功！" + name);
+                    window.location.href = "/record"
+                }
+                else{
+                    if(wrongtime < 5){
+                        wrongtime = wrongtime + 1;
+                    }
+                    else if(wrongtime == 5){
+                        alert("没有匹配的人，打卡的人为" + name);
+                        window.location.href = "/baojin"
+                        wrongtime = wrongtime + 1
+                    }
+                }
+            });
+        });
+    };
+
+
+
+</script>
+
+{% endblock %}

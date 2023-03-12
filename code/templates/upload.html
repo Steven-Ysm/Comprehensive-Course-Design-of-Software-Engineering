@@ -1,0 +1,43 @@
+{% extends 'nav.html' %}
+{% block title %} 上传本地图片 {% endblock %}
+{% block body_part %}
+<body>
+    <div class='center'>
+        <div class='title'>上传头像</div>
+        <form action="" enctype='multipart/form-data' method='POST'>
+            <label  id="realBtn" class="btn btn-info">
+                <input  type="file" id="fileInput1" name="file" class="mFileInput" style="left:-9999px;position:absolute;">
+                <span >选择头像</span >
+            </label >
+            
+            <div class='upload-label'>
+                <label id='upload-label'>没有选择文件</label>
+            </div>
+            <div>
+                <img id='image-picked' class='no-display' alt='Chosen Image' height='250'>
+            </div>
+            <br>
+            <i>请输入您的用户名(将根据用户名对头像进行命名)</i>
+            <br>
+            <input type="text" class="txt_input" name="name"  style="margin-top:10px;"/>
+            <input type="submit" value="上传" class="button-new" style="margin-top:15px;"/>
+        </form>
+    </div>
+    <script>
+        function initUpload() {
+            document.getElementById("fileInput1").addEventListener('change', function () {
+                const { files } = this
+                const f = files[0]
+                el("image-picked").src = URL.createObjectURL(f);
+                el("image-picked").className = "";
+
+                // 获取文件名
+                var fileName = this.value.replace(/\\/gim, '/').split('/').pop()
+                document.getElementById("upload-label").innerHTML = fileName
+            })
+        }
+
+        initUpload()
+    </script>
+</body>
+{% endblock %}

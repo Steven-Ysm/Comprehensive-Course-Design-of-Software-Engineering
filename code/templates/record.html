@@ -1,0 +1,26 @@
+{% extends 'nav.html' %}
+
+{% block body_part %}
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>打卡名</th>
+        <th>打卡时间</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for x in records %}
+      <tr>
+        <td>{{x.username}}</td>
+        <td>{{x.time}}</td>
+      </tr>
+      <tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock %}

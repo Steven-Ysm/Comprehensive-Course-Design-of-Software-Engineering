@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <title>Bootstrap 导航</title> -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    {% block head_part %}
+    {% endblock %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel='stylesheet' href='../static/style1.css'>
+    <script src='../static/client.js'></script>
+        
+
+
+
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        body {
+            min-height: 100vh;
+            background-image: linear-gradient(120deg, #3498db, #8e44ad);
+        }
+        p1 {
+            color: rgb(0, 0, 0);
+            width: 360px;
+            text-align: center;
+            font-size: large;
+            padding: 10px 10px;
+            background: #f1f1f1;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -150%);
+        }
+        #da{
+            height: 150px;
+            width: 150px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, 50%);
+        }
+        #videoElement{
+            border-radius: 10px;
+            height: 550px;
+            width: 550px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .login-form{
+            width: 360px;
+            background: #f1f1f1;
+            height: 580px;
+            padding: 80px 40px;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">
+                    <img style="max-width:30px;margin-top:-6px;" class="logo" src="{{ url_for('static',filename='future.png') }}">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!--<li class="active">-->
+                    <li>
+                        <a href="/daka">人脸识别打卡
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/record">打卡记录</a>
+                    </li>
+                    <li>
+                        <a href="/image">图像识别</a>
+                    </li>
+                    <li>
+                        <a href="/video">视频识别</a>
+                    </li>
+                    <li>
+                        <a href="/camera">摄像头识别</a>
+                    </li>
+                    <li>
+                        <a href="/upload">上传头像</a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/user/sign-out">登出</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+{% block body_part %}
+{% endblock %}
+
+</body>
+
+</html>
