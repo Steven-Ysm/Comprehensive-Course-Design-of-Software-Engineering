@@ -53,10 +53,7 @@ pip install -r requirements.txt
 
 ## 5. 演示视频
 
-以下为演示视频，这是较早版本，后续的登录注册页面重新进行了修改，具体可观看报告中的截图。
-
-[![Watch the video](https://github.com/Steven-Ysm/Comprehensive-Course-Design-of-Software-Engineering/blob/master/video/%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4）
-
+演示视频可以观看video文件夹，这是较早版本，后续的登录注册页面重新进行了修改，具体可观看报告中的截图。
 
 ## 6. 参考来源
 
