@@ -1,4 +1,4 @@
-# Flask-Face_Recognition-Yolo
+# Image recognition processing system
 
 ## 1. 项目介绍
 
@@ -60,7 +60,7 @@ pip install -r requirements.txt
 </video>
 
 
-## 5.
+## 6. 参考来源
 
 本项目主要参考两个来源：
 
